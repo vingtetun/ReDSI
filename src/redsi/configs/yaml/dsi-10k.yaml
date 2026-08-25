@@ -1,0 +1,10 @@
+defaults:
+  - dsi
+  - _self_
+
+datasets:
+    splits:
+        - name: 10K
+          train_queries: 8000
+          val_queries: 2000
+          unique_docs_in_train: true

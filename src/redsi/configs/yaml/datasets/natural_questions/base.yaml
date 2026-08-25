@@ -1,0 +1,56 @@
+# @package datasets
+
+# From Transformer Memory as a Differentiable Search Index
+# ...
+# 4 Experiments
+# ...
+# Dataset We conduct our experiments on the challenging Natural Questions (NQ) (Kwiatkowski
+# et al., 2019) dataset. NQ consists of 307K query-document training pairs and 8K validation pairs,
+# where the queries are natural language questions and the documents are Wikipedia articles. Given a
+# question, the retrieval task is to identify the Wikipedia article that answers it. For evaluating how
+# DSI models perform at different scales, we construct three sets from NQ to form our testbed, namely
+# NQ10K, NQ100K, and NQ320K denoting different numbers of total query-document pairs in the
+# combined train and validation splits. NQ320K is the full NQ set and uses its predetermined training
+# and validation split for evaluation purposes. Unlike NQ320K, NQ10K and NQ100K constructs
+# randomly sampled validation sets. For all datasets, we use the same docid space/budget of 320K
+# tokens for all unstructured atomic and naively structured identifier experiments. Semantically
+# structured identifiers are generated separately for each dataset so as to prevent leakage of semantic
+# information from larger splits into smaller ones. Text is lowercased. Note that there exists fewer
+# unique documents than query-document pairs in these datasets. Please refer to Table 4 (Appendix)
+# which reports the statistics of these datasets.
+plugin: natural_questions
+params:
+    data_source: ${arguments.out_root_dir}/natural_questions
+    text_limit: 32768
+    lowercase: true
+
+train: train
+validation: validation
+
+# From Transformer Memory as a Differentiable Search Index
+# ...
+# 7.1 Dataset Statistics
+# Table 4: Statistics of NQ datasets used in our experiments. (Referenced in Section 4.) The number in
+# the dataset name corresponds to the total number of document-query pairs in the dataset, while |D|
+# corresponds to the number of unique documents, based on the first 4000 UTF-8 characters of the
+# document.
+# +-------+-------+-------------+-----------+----------+
+# |Dataset|  |D|  | Train Pairs | Val Pairs | Vdoc_out |
+# +-------+-------+-------------+-----------+----------+
+# |NQ10K  | 10K   | 8K          | 2K        | 320K     |
+# |NQ100K | 86K   | 80K         | 20K       | 320K     |
+# |NQ320K | 228K  | 307K        | 8K        | 320K     |
+# +-------+-------+-------------+-----------+----------+
+splits:
+  - name: "10K"
+    train_queries: 8000
+    val_queries: 2000
+    unique_docs_in_train: true
+  - name: "100K"
+    train_queries: 80000
+    val_queries: 20000
+    unique_docs_in_train: false
+  - name: "320K"
+    train_queries: -1
+    val_queries: -1
+    unique_docs_in_train: false

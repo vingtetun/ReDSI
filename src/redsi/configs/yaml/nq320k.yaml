@@ -1,0 +1,17 @@
+defaults:
+  - datasets: nq320k
+  - identifiers: naive
+  - augmentation: default
+  - transformation: default
+  - export: default
+
+  # Runtime
+  - arguments: default
+
+  # Framework
+  - hydra: default
+  - override hydra/help: redsi_help
+  - _self_
+
+arguments:
+  out_dir: ${arguments.out_root_dir}/nq320k-${datasets.params.config_name}-${plugin_names:${identifiers}}

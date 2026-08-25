@@ -1,0 +1,4 @@
+atomic:
+    tokenizer_name: ${arguments.tokenizer_name}
+    prefix: doc
+    start: 0

@@ -1,0 +1,6 @@
+# Naive identifiers with the minimal collision-free budget.
+#
+# Useful for datasets whose document count is not known in advance or exceeds
+# the fixed DSI-style 320K budget.
+naive:
+    budget: 0

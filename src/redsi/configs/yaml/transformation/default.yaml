@@ -1,0 +1,30 @@
+tokenizer:
+    tokenizer_name: ${arguments.tokenizer_name}
+    document_max_length: 32
+    require_single_token_per_docid_char: False
+    drop_text_after_tokenization: True
+
+task_prefix_tokens:
+    tokenizer_name: ${arguments.tokenizer_name}
+
+multitask:
+    shuffle_seed: ${arguments.seed}
+    shuffle_train: True
+    shuffle_validation: False
+    train_output_split: train
+    validation_output_split: validation
+    document_row_multiplier: 1
+
+drop_columns:
+    columns:
+        - title
+        - source
+        - document_url_title
+        - document_h1_title
+        - document_nq_title
+        - nci_dedup_title
+        - source_ids
+    splits:
+        - train
+        - validation
+    ignore_missing: True

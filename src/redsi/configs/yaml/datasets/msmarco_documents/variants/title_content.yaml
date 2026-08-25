@@ -1,0 +1,6 @@
+# @package datasets
+
+defaults:
+  - /datasets/msmarco_document_v1
+  - /datasets/msmarco_documents/text_style/title_content
+  - _self_

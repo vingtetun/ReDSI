@@ -1,0 +1,34 @@
+# @package _global_
+
+defaults:
+  - /dsi
+  - _self_
+
+arguments:
+  tokenizer_name: google-t5/t5-small
+
+datasets:
+  splits:
+    - name: "320K"
+      train_queries: -1
+      val_queries: -1
+      unique_docs_in_train: false
+
+hydra:
+  sweep:
+    dir: ${arguments.out_root_dir}/hydra/multirun/nq320k_ncinorm_ncititle_naive_budget
+    subdir: ${hydra.job.override_dirname}
+  sweeper:
+    params:
+      datasets: >-
+        natural_questions/variants/ncinorm/ncititle
+      identifiers: >-
+        naive_budget_x1,
+        naive_budget_x2,
+        naive_320k,
+        naive_budget_x4,
+        naive_budget_x8,
+        naive_budget_x16,
+        naive_budget_x32,
+        naive_budget_x64,
+        naive_budget_x128

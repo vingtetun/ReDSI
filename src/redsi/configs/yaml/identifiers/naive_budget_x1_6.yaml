@@ -1,0 +1,4 @@
+# Naive identifiers with budget = 1.6 * |D|.
+naive:
+    budget: 0
+    budget_multiplier: 1.6

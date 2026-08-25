@@ -1,0 +1,14 @@
+defaults:
+  - datasets: natural_questions
+  - identifiers: naive_320k
+  - augmentation: default
+  - transformation: default
+  - export: default
+
+  # Runtime
+  - arguments: default
+
+  # Framework
+  - hydra: default
+  - override hydra/help: redsi_help
+  - _self_

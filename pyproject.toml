@@ -1,0 +1,132 @@
+[build-system]
+requires = ["setuptools>=77.0.3", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "redsi"
+version = "0.1.0"
+description = "Reusable DSI dataset and identifier pipeline for ReDSI experiments."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "Vivien Nicolas" },
+]
+keywords = [
+  "datasets",
+  "differentiable-search-index",
+  "dsi",
+  "generative-retrieval",
+  "information-retrieval",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: Indexing",
+]
+dependencies = [
+  "accelerate>=0.26.0",
+  "datasets>=4.5.0",
+  "huggingface-hub>=0.36.2",
+  "hydra-core>=1.3.2",
+  "importlib-metadata>=4.6; python_version < '3.10'",
+  "numpy>=1.23",
+  "omegaconf>=2.3.0",
+  "prettytable>=3.16.0",
+  "scikit-learn>=1.0",
+  "sentencepiece>=0.2.0",
+  "tensorboard>=2.14.0",
+  "torch>=2.8.0",
+  "tqdm>=4.67.3",
+  "transformers>=4.57.6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit>=4.3.0",
+  "ruff>=0.15.4",
+]
+release = [
+  "build>=1.2.0",
+  "twine>=5.0.0",
+]
+
+[project.scripts]
+redsi-build = "redsi.cli:cli"
+redsi-evaluate = "redsi.training.evaluate:main"
+redsi-train = "redsi.training.train:main"
+
+[project.entry-points."redsi.plugins.datasets"]
+msmarco_documents = "redsi.builtins.datasets.msmarco_documents.plugin:MSMarcoDocumentsDatasetPlugin"
+natural_questions = "redsi.builtins.datasets.natural_questions.plugin:NaturalQuestionsDatasetPlugin"
+nq320k = "redsi.builtins.datasets.nq320k.plugin:NQ320KDatasetPlugin"
+
+[project.entry-points."redsi.plugins.identifiers"]
+atomic = "redsi.builtins.identifiers.atomic:AtomicIdentifierPlugin"
+hash_baseN = "redsi.builtins.identifiers.hash_baseN:HashBaseNIdentifierPlugin"
+identity = "redsi.builtins.identifiers.identity:IdentityIdentifierPlugin"
+naive = "redsi.builtins.identifiers.naive:NaiveIdentifierPlugin"
+semantic = "redsi.builtins.identifiers.semantic:SemanticIdentifierPlugin"
+uuid4 = "redsi.builtins.identifiers.uuid4:UUID4IdentifierPlugin"
+
+[project.entry-points."redsi.plugins.transformation"]
+drop_columns = "redsi.builtins.transformation.drop_columns.plugin:DropColumnsPlugin"
+multitask = "redsi.builtins.transformation.multitask.plugin:MultitaskPlugin"
+task_prefix_tokens = "redsi.builtins.transformation.task_prefix_tokens.plugin:TaskPrefixTokensPlugin"
+tokenizer = "redsi.builtins.transformation.tokenizer.plugin:TokenizerPlugin"
+
+[project.entry-points."redsi.plugins.augmentation"]
+titles = "redsi.builtins.augmentation.titles.plugin:TitlesAugmentationPlugin"
+validation_index = "redsi.builtins.augmentation.validation_index.plugin:ValidationIndexAugmentationPlugin"
+
+[project.entry-points."redsi.plugins.export"]
+disk_writer = "redsi.builtins.export.disk_writer:DiskWriterPlugin"
+nq320k_package = "redsi.builtins.export.nq320k_package:NQ320KPackageExportPlugin"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = false
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["redsi*"]
+
+[tool.setuptools.package-data]
+redsi = [
+  "configs/yaml/**/*.yaml",
+  "builtins/datasets/natural_questions/data/*.txt",
+  "builtins/datasets/natural_questions/data/*.jsonl",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+# Reasonable default rule sets (flake8-ish + import cleanup)
+lint.select = ["E", "F", "I", "B", "UP"]
+lint.ignore = []
+
+# Allow ruff to auto-fix issues it knows how to fix
+lint.fixable = ["ALL"]
+lint.unfixable = []
+
+# Common excludes
+exclude = [
+  ".git",
+  "__pycache__",
+  ".venv",
+  "venv",
+  "build",
+  "dist",
+  ".mypy_cache",
+  ".pytest_cache",
+  "loader",
+]

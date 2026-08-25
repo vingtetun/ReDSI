@@ -1,0 +1,7 @@
+# @package datasets
+
+defaults:
+  - /datasets/natural_questions/base
+  - /datasets/natural_questions/text_style/ncinorm
+  - /datasets/natural_questions/dedup_method/text4k
+  - _self_

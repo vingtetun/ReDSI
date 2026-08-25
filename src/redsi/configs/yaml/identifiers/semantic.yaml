@@ -1,0 +1,22 @@
+# From Transformer Memory as a Differentiable Search Index
+# ...
+# Semantically Structured Identifiers
+# ...
+# Documents are embedded, clustered into a decimal tree, and assigned docid strings
+# where semantically similar documents share prefixes. Each internal node uses
+# scikit-learn's default k-means with k=10. Clusters with c documents or fewer
+# receive arbitrary local suffixes. The DSI paper uses c=100 and embeddings from
+# a small 8-layer BERT.
+# ...
+semantic:
+    model_name: google/bert_uncased_L-8_H-512_A-8
+    branching_factor: 10
+    max_leaf_size: 100
+    batch_size: 32
+    max_length: 512
+    pooling: cls
+    normalize_embeddings: false
+    kmeans_backend: sklearn
+    # Only used if scikit-learn is unavailable and the built-in fallback is used.
+    kmeans_max_iter: 100
+    kmeans_n_init: 4

@@ -1,0 +1,7 @@
+# Fixed-budget naive identifiers used by DSI-style NQ experiments.
+#
+# The DSI NQ setup keeps a 320K identifier space even when the deduplicated
+# document set is smaller. Use `identifiers=naive` for the minimal
+# collision-free budget `|D|`.
+naive:
+    budget: 320000

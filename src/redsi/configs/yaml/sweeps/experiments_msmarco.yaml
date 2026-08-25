@@ -1,0 +1,19 @@
+# @package _global_
+
+defaults:
+  - /dsi
+  - _self_
+
+arguments:
+  tokenizer_name: google-t5/t5-small
+
+hydra:
+  sweeper:
+    params:
+      datasets: >-
+        msmarco_document_v1,
+        msmarco_documents/variants/title_content
+      identifiers: >-
+        naive,
+        atomic,
+        semantic

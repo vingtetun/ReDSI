@@ -1,0 +1,12 @@
+seed: 42
+out_root_dir: build
+dataset_out_dir: ${.out_root_dir}/${datasets.plugin}/${sha1_value:${datasets.params}}
+identifier_out_dir: ${.dataset_out_dir}/${plugin_names:${identifiers}}/${sha1_value:${identifiers}}
+dataset_cache_dir: ${.dataset_out_dir}/cache
+augmentation_cache_dir: ${.identifier_out_dir}/cache/augment
+out_dir: ${.identifier_out_dir}/augmentation/${sha1_value:${augmentation}}/transformation/${sha1_value:${transformation}}/export/${sha1_value:${export}}
+num_proc: null
+dataset_limit: -1
+disable_caching: False
+model_name: google-t5/t5-base
+tokenizer_name: ${.model_name}

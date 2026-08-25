@@ -1,0 +1,11 @@
+# @package datasets
+
+defaults:
+  - /datasets/natural_questions/variants/htmlnorm/pageid
+  - _self_
+
+splits:
+  - name: "320K"
+    train_queries: -1
+    val_queries: -1
+    unique_docs_in_train: false

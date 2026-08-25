@@ -1,0 +1,5 @@
+run:
+  dir: ${arguments.out_dir}/hydra/
+sweep:
+  dir: ${arguments.out_dir}/hydra/multirun/
+  subdir: ${hydra.job.override_dirname}

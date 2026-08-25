@@ -1,0 +1,22 @@
+# @package _global_
+
+defaults:
+  - /build/nq320k_package/base
+  - _self_
+
+hydra:
+  sweep:
+    dir: ${arguments.out_root_dir}/hydra/multirun/nq320k_package_all
+  sweeper:
+    params:
+      datasets.params.text_style: >-
+        simplified,
+        simplenorm,
+        ncinorm,
+        htmlnorm
+      datasets.params.dedup_method: >-
+        none,
+        pageid,
+        ncititle,
+        url,
+        text4k

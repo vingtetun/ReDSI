@@ -1,0 +1,7 @@
+# @package datasets
+
+defaults:
+  - /datasets/natural_questions/base
+  - /datasets/natural_questions/text_style/title_abstract_content
+  - /datasets/natural_questions/dedup_method/pageid
+  - _self_

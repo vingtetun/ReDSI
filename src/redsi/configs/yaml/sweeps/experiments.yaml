@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - /dsi
+  - _self_
+
+arguments:
+  tokenizer_name: google-t5/t5-small
+
+hydra:
+  sweeper:
+    params:
+      datasets: >-
+        natural_questions/variants/htmlnorm/ncititle,
+        natural_questions/variants/htmlnorm/pageid,
+        natural_questions/variants/ncinorm/ncititle,
+        natural_questions/variants/ncinorm/pageid
+      identifiers: >-
+        naive_320k,
+        atomic,
+        semantic

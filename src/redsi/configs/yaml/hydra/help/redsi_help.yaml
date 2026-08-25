@@ -1,0 +1,32 @@
+app_name: redsi
+
+header: |-
+  == ${hydra.help.app_name} ==
+
+footer: |-
+  Plugins:
+    - List available plugins:
+        python run.py --plugins
+      (or: python run.py plugins=list  if you implement it as a mode)
+  Powered by Hydra (https://hydra.cc)
+  Use --hydra-help to view Hydra specific help
+
+template: |-
+  ${hydra.help.header}
+
+  Build datasets for ReDSI experiments.
+
+  == Configuration groups ==
+  Compose your configuration from those groups (group=option)
+
+  $APP_CONFIG_GROUPS
+
+  == Config ==
+  This is the config generated for this run.
+  Override anything with key=value
+
+  -------
+  $CONFIG
+  -------
+
+  ${hydra.help.footer}

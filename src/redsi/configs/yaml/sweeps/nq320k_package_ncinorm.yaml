@@ -1,0 +1,21 @@
+# @package _global_
+
+defaults:
+  - /build/nq320k_package/base
+  - _self_
+
+datasets:
+  params:
+    text_style: ncinorm
+
+hydra:
+  sweep:
+    dir: ${arguments.out_root_dir}/hydra/multirun/nq320k_package_ncinorm
+  sweeper:
+    params:
+      datasets.params.dedup_method: >-
+        none,
+        pageid,
+        ncititle,
+        url,
+        text4k

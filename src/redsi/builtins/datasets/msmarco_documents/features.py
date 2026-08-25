@@ -1,0 +1,6 @@
+KEY_ID = "docid"
+KEY_DOCUMENT_TEXT = "body"
+KEY_DOCUMENT_TITLE = "title"
+KEY_DOCUMENT_URL = "url"
+
+KEY_QUESTION_TEXT = "text"

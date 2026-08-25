@@ -1,0 +1,23 @@
+# @package datasets
+
+plugin: msmarco_documents
+params:
+    data_source: ${arguments.out_root_dir}/msmarco_documents
+    lowercase: true
+
+train: train
+validation: validation
+
+splits:
+  - name: "10K"
+    train_queries: 8000
+    val_queries: 2000
+    unique_docs_in_train: true
+  - name: "100K"
+    train_queries: 95000
+    val_queries: 5000
+    unique_docs_in_train: true
+  - name: "300K"
+    train_queries: -1
+    val_queries: -1
+    unique_docs_in_train: false

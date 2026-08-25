@@ -1,0 +1,4 @@
+nq320k_package:
+  output_subdir: nq320k_package
+  text_style: ""
+  dedup_method: ""

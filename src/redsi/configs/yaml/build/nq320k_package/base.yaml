@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - /datasets: natural_questions/base
+  - /export: nq320k_package
+  - /arguments: default
+  - _self_
+
+identifiers:
+  none: {}
+
+augmentation:
+  none: {}
+
+transformation:
+  none: {}
+
+datasets:
+  params:
+    data_source: build/natural_questions
+    text_style: simplenorm
+    dedup_method: none
+    text_limit: -1
+    lowercase: false
+  splits:
+    - name: "320K"
+      train_queries: -1
+      val_queries: -1
+      unique_docs_in_train: false
+
+arguments:
+  out_dir: build/nq320k_package
+
+export:
+  nq320k_package:
+    output_subdir: data/${datasets.params.text_style}/${datasets.params.dedup_method}
+    text_style: ${datasets.params.text_style}
+    dedup_method: ${datasets.params.dedup_method}

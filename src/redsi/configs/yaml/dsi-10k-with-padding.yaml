@@ -1,0 +1,16 @@
+defaults:
+  - dsi-10k
+  - _self_
+
+datasets:
+    params:
+        text_limit: 512
+
+identifiers:
+    naive:
+        budget: 0
+        pad_to_max_length: True
+
+transformation:
+    tokenizer:
+        require_single_token_per_docid_char: True

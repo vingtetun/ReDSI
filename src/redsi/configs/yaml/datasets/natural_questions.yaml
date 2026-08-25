@@ -1,0 +1,5 @@
+# @package datasets
+
+defaults:
+  - natural_questions/variants/htmlnorm/pageid
+  - _self_

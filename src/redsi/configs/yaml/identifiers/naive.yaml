@@ -1,0 +1,20 @@
+# From Transformer Memory as a Differentiable Search Index
+# ...
+# 3.2 Representing Docids for Retrieval
+# ...
+# Naively Structured String Identifiers We also consider an ostensibly absurd approach that treats
+# unstructured identifiers, i.e., arbitrary unique integers, as tokenizable strings. We refer to these
+# asnaively structured identifiers. In this formulation, retrieval is accomplished by decoding a docid
+# string sequentially one token at a time.
+# This eliminates the need for the large softmax output space that comes with unstructured
+# atomic identifiers. It also eliminates the need to learn embeddings for each individual docid.
+# When decoding, beam search is used to obtain the predicted best docid. With this strategy, it is less
+# straightforward to obtain a top-k ranking. One could exhaustively comb through the entire docid
+# space and obtain the likelihood of each docid given the query. Instead, we use the partial beam search
+# tree to construct top-k retrieval scores. We find this approximation to be quite efficient and effective
+# in practice.
+# ...
+naive:
+    # For a relative budget, keep budget <= 0 and add e.g.
+    # +identifiers.naive.budget_multiplier=2
+    budget: 0

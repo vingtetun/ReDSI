@@ -1,0 +1,16 @@
+# @package datasets
+
+plugin: nq320k
+params:
+  data_source: vingtetun/nq320k
+  config_name: htmlnorm-pageid
+  revision: ""
+  repo_type: dataset
+  text_limit: -1
+  lowercase: false
+
+splits:
+  - name: "320K"
+    train_queries: -1
+    val_queries: -1
+    unique_docs_in_train: false

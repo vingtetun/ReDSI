@@ -1,0 +1,14 @@
+defaults:
+  - datasets: msmarco_document_v1
+  - identifiers: naive
+  - augmentation: default
+  - transformation: default
+  - export: default
+
+  # Runtime
+  - arguments: default
+
+  # Framework
+  - hydra: default
+  - override hydra/help: redsi_help
+  - _self_

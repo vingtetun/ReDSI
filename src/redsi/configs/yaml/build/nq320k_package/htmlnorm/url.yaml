@@ -1,0 +1,10 @@
+# @package _global_
+
+defaults:
+  - /build/nq320k_package/base
+  - _self_
+
+datasets:
+  params:
+    text_style: htmlnorm
+    dedup_method: url
